@@ -5,7 +5,7 @@ export const FullScreenBackground = styled.div`
   width: 100vw;
   background-image: url("/images/north-compressed.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center 35%;
   display: flex;
   align-items: center;
   justify-content: center;

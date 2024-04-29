@@ -30,7 +30,7 @@ export const Hamburger = styled.div`
   }
 `;
 
-export const StyledSignIn = styled(Link)`
+export const StyledSignIn = styled(({ isHeaderHovered, ...rest }) => <Link {...rest} />)`
   text-decoration: none;
   transition: color 0.2s, transform 0.2s, background-color 0.2s;
   color: ${(props) => (props.isHeaderHovered ? "black" : "white")};

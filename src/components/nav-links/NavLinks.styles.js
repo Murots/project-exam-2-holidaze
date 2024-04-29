@@ -2,29 +2,29 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const NavContainer = styled.nav`
-  display: flex; // Default to flex to allow inline on larger screens
-  flex-direction: row; // Align items in a row on larger screens
-  align-items: center; // Center items vertically
-  position: relative; // Default position
-  background-color: transparent; // Ensure it matches the header background on large screens
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  background-color: transparent;
 
   @media (max-width: 768px) {
-    flex-direction: column; // Stack vertically on smaller screens
-    position: absolute; // Absolutely position to overlay content when menu is open
-    top: 60px; // Start below the header area
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
     left: 0;
     right: 0;
-    background-color: #e9ecef; // Visible menu background on smaller screens
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")}; // Only display when menu is toggled open
+    background-color: #e9ecef;
+    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
     padding: 10px 20px;
-    z-index: 10; // Make sure it's on top of other content
+    z-index: 10;
   }
 `;
 
-export const StyledLink = styled(Link)`
+export const StyledLink = styled(({ isHovered, ...props }) => <Link {...props} />)`
   text-decoration: none;
   transition: color 0.2s, transform 0.2s;
-  color: ${(props) => (props.isHovered ? "black" : "white")};
+  color: ${({ isHovered }) => (isHovered ? "black" : "white")};
   font-weight: 600;
   margin-right: 20px;
 
