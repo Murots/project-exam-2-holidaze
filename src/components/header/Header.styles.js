@@ -6,7 +6,7 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background-color: transparent;
+  background-color: ${(props) => props.backgroundColor};
   position: fixed;
   width: 100%;
   z-index: 1000;

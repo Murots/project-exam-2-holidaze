@@ -8,8 +8,8 @@ export const PageContainer = styled.div`
 
 export const VenuesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-auto-rows: 100px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 70px;
   gap: 20px;
   grid-auto-flow: dense;
 
@@ -22,9 +22,8 @@ export const VenuesGrid = styled.div`
   }
 `;
 
-export const Header = styled.h1`
-  font-size: 24px;
-  color: #333;
+export const Heading = styled.h1`
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 100px;
 `;
