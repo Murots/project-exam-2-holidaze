@@ -5,7 +5,7 @@ export const Container = styled.div`
   background: #fff;
   box-shadow: 0 0px 6px rgba(0, 0, 0, 0.2);
   max-width: 1200px;
-  margin: 0 auto 0 auto;
+  margin: 0 auto;
 `;
 
 export const PageHeader = styled.div`
@@ -34,7 +34,23 @@ export const Description = styled.p`
   margin-bottom: 40px;
 `;
 
+export const Features = styled.div`
+  margin-top: 20px;
+`;
+
 export const FeaturesList = styled.ul`
   list-style: none;
   padding: 0;
+`;
+
+export const CalendarStyles = styled.div`
+  .react-calendar {
+    border-radius: 8px;
+    max-width: 350px;
+  }
+
+  .booked {
+    background-color: #ff6961;
+    color: white;
+  }
 `;
