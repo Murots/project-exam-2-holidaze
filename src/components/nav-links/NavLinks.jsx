@@ -15,7 +15,7 @@ import * as S from "./NavLinks.styles";
 const NavLinks = ({ onClose, isOpen, isHeaderHovered }) => {
   return (
     <S.NavContainer isOpen={isOpen}>
-      <S.StyledLink to="/" onClick={onClose} isHovered={isHeaderHovered}>
+      <S.StyledLink to="/venues" onClick={onClose} isHovered={isHeaderHovered}>
         Venues
       </S.StyledLink>
       <S.StyledLink to="/contact" onClick={onClose} isHovered={isHeaderHovered}>

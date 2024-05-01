@@ -6,7 +6,7 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background-color: transparent;
+  background-color: ${(props) => props.backgroundColor};
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -30,7 +30,7 @@ export const Hamburger = styled.div`
   }
 `;
 
-export const StyledSignIn = styled(Link)`
+export const StyledSignIn = styled(({ isHeaderHovered, ...rest }) => <Link {...rest} />)`
   text-decoration: none;
   transition: color 0.2s, transform 0.2s, background-color 0.2s;
   color: ${(props) => (props.isHeaderHovered ? "black" : "white")};
