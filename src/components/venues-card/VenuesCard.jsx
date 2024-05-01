@@ -1,15 +1,21 @@
 import React from "react";
 import * as S from "./VenuesCard.styles";
+import { useNavigate } from "react-router-dom";
 
 const VenuesCard = ({ venue, rating }) => {
   const { name, media, price, location } = venue;
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`/venues/${venue.id}`);
+  };
   // const imageUrl = media.length > 0 ? media[0].url : "https://via.placeholder.com/300";
   // const imageAlt = media.length > 0 ? media[0].alt || "Venue Image" : "No image available";
   // const imageUrl = media.length > 0 ? media[0].url : "https://via.placeholder.com/300";
   // const imageAlt = media.length > 0 ? media[0].alt || "Venue Image" : "No image available";
 
   return (
-    <S.Card rating={rating}>
+    <S.Card rating={rating} onClick={handleClick}>
       <S.Image src={media[0].url} alt={name} />
       <S.Content>
         <S.TopContent>

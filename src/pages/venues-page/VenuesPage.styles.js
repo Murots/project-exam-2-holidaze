@@ -12,6 +12,7 @@ export const VenuesGrid = styled.div`
   grid-auto-rows: 70px;
   gap: 20px;
   grid-auto-flow: dense;
+  margin-bottom: 50px;
 
   @media (max-width: 768px) {
     grid-template-columns: repeat(4, 1fr);

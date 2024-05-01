@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Card = styled.div`
   background: white;
   border-radius: 8px;
-  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ export const Card = styled.div`
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   &:hover {
     transform: ${(props) => (props.rating >= 4 ? "scale(1.1)" : props.rating >= 2 ? "scale(1.15)" : "scale(1.5)")};
-    box-shadow: 0 0px 16px rgba(0, 0, 0, 1);
+    box-shadow: 0 0px 16px rgba(0, 0, 0, 3);
   }
 `;
 
