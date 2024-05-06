@@ -33,7 +33,6 @@ const useApi = () => {
     return response.json();
   }, []);
 
-  // Add other methods (PUT, PATCH) as needed
   return { get, post, del };
 };
 
