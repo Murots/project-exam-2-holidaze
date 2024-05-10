@@ -1,4 +1,11 @@
 import styled from "styled-components";
+import { feedbackMessageStyle } from "../../styles/GlobalStyles";
+
+export const FeedbackMessage = styled.p`
+  ${feedbackMessageStyle}
+  margin-top: 20px;
+  margin-bottom: 0px;
+`;
 
 export const Container = styled.div`
   padding: 20px;
@@ -129,6 +136,12 @@ export const BookButton = styled.button`
     background-color: #45a049;
   }
 
+  &:disabled {
+    background-color: #c8c8c8;
+    cursor: not-allowed;
+    color: #a8a8a8;
+  }
+
   @media (max-width: 800px) {
     width: 100%;
   }
@@ -146,6 +159,25 @@ export const PriceContainer = styled.div`
 export const PriceDetail = styled.p`
   font-size: 16px;
   font-weight: bold;
+`;
+
+export const LegendContainer = styled.div`
+  display: flex;
+  margin-top: 10px;
+  align-self: start;
+`;
+
+export const LegendSquare = styled.span`
+  width: 16px;
+  height: 16px;
+  background-color: #ff6961;
+  display: inline-block;
+  margin-right: 8px;
+`;
+
+export const LegendText = styled.span`
+  font-size: 14px;
+  color: #333;
 `;
 
 export const Features = styled.div`
