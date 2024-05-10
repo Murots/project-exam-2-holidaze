@@ -1,4 +1,11 @@
 import styled from "styled-components";
+import { feedbackMessageStyle } from "../../styles/GlobalStyles";
+
+export const FeedbackMessage = styled.p`
+  ${feedbackMessageStyle}
+  margin-top: 20px;
+  margin-bottom: 0px;
+`;
 
 export const Container = styled.div`
   padding: 20px;

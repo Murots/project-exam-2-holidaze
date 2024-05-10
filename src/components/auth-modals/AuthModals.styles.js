@@ -1,5 +1,12 @@
 import styled from "styled-components";
 import { FaTimes } from "react-icons/fa";
+import { feedbackMessageStyle } from "../../styles/GlobalStyles";
+
+export const FeedbackMessage = styled.p`
+  ${feedbackMessageStyle}
+  margin-top: 20px;
+  margin-bottom: 0px;
+`;
 
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -84,14 +91,4 @@ export const CloseIcon = styled(FaTimes)`
   &:hover {
     color: #000;
   }
-`;
-
-export const ErrorMessage = styled.p`
-  color: red;
-  font-size: 14px;
-`;
-
-export const SuccessMessage = styled.p`
-  color: green;
-  font-size: 14px;
 `;
