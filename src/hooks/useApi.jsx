@@ -60,7 +60,7 @@ const useApi = () => {
     const headers = {
       "Content-Type": "application/json",
       ...(token && { Authorization: `Bearer ${token}` }),
-      ...(apiKey && { "X-API-Key": apiKey }),
+      ...(apiKey && { "X-Noroff-API-Key": apiKey }),
     };
 
     const fetchOptions = {

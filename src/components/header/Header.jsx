@@ -52,7 +52,7 @@
 // }
 
 // export default Header;
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./Header.styles";
 import { RxHamburgerMenu } from "react-icons/rx";
 import NavLinks from "../nav-links/NavLinks";
@@ -81,6 +81,20 @@ function Header() {
   const switchForm = (type) => {
     setFormType(type);
   };
+
+  useEffect(() => {
+    const handleSignInRequest = () => {
+      if (!isAuthenticated) {
+        handleAuthModalOpen();
+      }
+    };
+
+    window.addEventListener("requestSignIn", handleSignInRequest);
+
+    return () => {
+      window.removeEventListener("requestSignIn", handleSignInRequest);
+    };
+  }, [isAuthenticated]);
 
   return (
     <S.Container backgroundColor={backgroundColor} onMouseEnter={() => setIsHeaderHovered(true)} onMouseLeave={() => setIsHeaderHovered(false)}>
