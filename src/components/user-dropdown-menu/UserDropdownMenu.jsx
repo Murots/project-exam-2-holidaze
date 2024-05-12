@@ -17,7 +17,7 @@ const UserDropdownMenu = ({ isHeaderHovered }) => {
       <S.Button onClick={toggleDropdown} isHeaderHovered={isHeaderHovered}>
         <S.IconUser size="20px" />
         <S.Username>{username || "Guest"}</S.Username>
-        <S.IconChevron size="15px" />
+        <S.ChevronIcon isOpen={isOpen} />
       </S.Button>
       <S.DropdownContent className={isOpen ? "open" : ""}>
         <S.DropdownItem to="/my-bookings">My Bookings</S.DropdownItem>
