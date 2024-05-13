@@ -1,10 +1,26 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { feedbackMessageStyle } from "../../styles/GlobalStyles";
+import { LoaderStyle } from "../../styles/GlobalStyles";
+
+export const Loader = styled.div`
+  ${LoaderStyle}
+`;
 
 export const FeedbackMessage = styled.p`
   ${feedbackMessageStyle}
-  margin-top: 20px;
-  margin-bottom: 0px;
+
+  ${(props) =>
+    props.error
+      ? css`
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        `
+      : css`
+          margin-top: 20px;
+          margin-bottom: 0px;
+        `}
 `;
 
 export const Container = styled.div`

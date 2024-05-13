@@ -1,62 +1,46 @@
 // import { useCallback } from "react";
 
 // const useApi = () => {
-//   const get = useCallback(async (url) => {
-//     const response = await fetch(url);
-//     if (!response.ok) {
-//       throw new Error("Could not fetch data");
+//   const fetchApi = useCallback(async (url, method = "GET", data = null, token = null, apiKey = null) => {
+//     const headers = {
+//       "Content-Type": "application/json",
+//       ...(token && { Authorization: `Bearer ${token}` }),
+//       ...(apiKey && { "X-Noroff-API-Key": apiKey }),
+//     };
+
+//     const fetchOptions = {
+//       method,
+//       headers,
+//       ...(data && { body: JSON.stringify(data) }),
+//     };
+
+//     try {
+//       const response = await fetch(url, fetchOptions);
+//       const result = await response.json();
+//       if (!response.ok) {
+//         throw new Error(result.errors ? result.errors[0].message : "Network response failed");
+//       }
+//       return result;
+//     } catch (error) {
+//       throw new Error(error.message);
 //     }
-//     return response.json();
 //   }, []);
 
-//   // const post = useCallback(async (url, data) => {
-//   //   const response = await fetch(url, {
-//   //     method: "POST",
-//   //     headers: {
-//   //       "Content-Type": "application/json",
-//   //     },
-//   //     body: JSON.stringify(data),
-//   //   });
-//   //   if (!response.ok) {
-//   //     throw new Error("Network response was not ok");
-//   //   }
-//   //   return response.json();
-//   // }, []);
-
-//   const post = useCallback(async (url, data) => {
-//     const response = await fetch(url, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify(data),
-//     });
-//     const result = await response.json();
-//     if (!response.ok) {
-//       throw new Error(result.errors ? result.errors[0].message : "Network response failed");
-//     }
-//     return result;
-//   }, []);
-
-//   const del = useCallback(async (url) => {
-//     const response = await fetch(url, {
-//       method: "DELETE",
-//     });
-//     if (!response.ok) {
-//       throw new Error("Network response was not ok");
-//     }
-//     return response.json();
-//   }, []);
-
-//   return { get, post, del };
+//   return { fetchApi };
 // };
 
 // export default useApi;
 
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
 const useApi = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const fetchApi = useCallback(async (url, method = "GET", data = null, token = null, apiKey = null) => {
+    setIsLoading(true);
+    setIsError(false);
+
     const headers = {
       "Content-Type": "application/json",
       ...(token && { Authorization: `Bearer ${token}` }),
@@ -73,15 +57,18 @@ const useApi = () => {
       const response = await fetch(url, fetchOptions);
       const result = await response.json();
       if (!response.ok) {
-        throw new Error(result.errors ? result.errors[0].message : "Network response failed");
+        throw new Error(result.errors ? result.errors[0].message : "Network response was not OK.");
       }
       return result;
     } catch (error) {
-      throw new Error(error.message);
+      setIsError(true);
+      throw error;
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
-  return { fetchApi };
+  return { fetchApi, isLoading, isError };
 };
 
 export default useApi;

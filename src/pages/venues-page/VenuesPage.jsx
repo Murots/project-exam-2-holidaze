@@ -12,14 +12,14 @@
 // };
 
 // const VenuesPage = () => {
-//   const { get } = useApi();
+//   const { fetchApi } = useApi();
 //   const [venues, setVenues] = useState([]);
 
 //   useEffect(() => {
-//     get("https://v2.api.noroff.dev/holidaze/venues")
-//       .then((response) => {
-//         if (response.data && Array.isArray(response.data)) {
-//           const validVenues = response.data.filter((venue) => {
+//     fetchApi("https://v2.api.noroff.dev/holidaze/venues", "GET")
+//       .then((result) => {
+//         if (result.data && Array.isArray(result.data)) {
+//           const validVenues = result.data.filter((venue) => {
 //             const hasValidMedia = venue.media && venue.media.length > 0 && !venue.media[0].url.includes("string");
 //             const hasValidPrice = venue.price != null && !venue.price.toString().includes("string");
 //             const hasValidName = venue.name && !venue.name.includes("string");
@@ -41,13 +41,13 @@
 //           const shuffledVenues = shuffle(uniqueVenues);
 //           setVenues(shuffledVenues);
 //         } else {
-//           console.error("Received data is not an array:", response);
+//           console.error("Received data is not an array:", result);
 //         }
 //       })
 //       .catch((error) => {
 //         console.error("Fetching venues failed:", error);
 //       });
-//   }, [get]);
+//   }, [fetchApi]);
 
 //   return (
 //     <S.PageContainer>
@@ -77,7 +77,7 @@ const shuffle = (array) => {
 };
 
 const VenuesPage = () => {
-  const { fetchApi } = useApi();
+  const { fetchApi, isLoading, isError } = useApi();
   const [venues, setVenues] = useState([]);
 
   useEffect(() => {
@@ -114,14 +114,30 @@ const VenuesPage = () => {
       });
   }, [fetchApi]);
 
+  if (isLoading) {
+    return <S.Loader />;
+  }
+
+  if (isError) {
+    return (
+      <S.PageContainer>
+        <S.FeedbackMessage error>Network error. Please try again later.</S.FeedbackMessage>
+      </S.PageContainer>
+    );
+  }
+
   return (
     <S.PageContainer>
       <S.Heading>Venues</S.Heading>
-      <S.VenuesGrid>
-        {venues.map((venue) => (
-          <VenuesCard key={venue.id} venue={venue} rating={venue.rating} />
-        ))}
-      </S.VenuesGrid>
+      {venues.length > 0 ? (
+        <S.VenuesGrid>
+          {venues.map((venue) => (
+            <VenuesCard key={venue.id} venue={venue} rating={venue.rating} />
+          ))}
+        </S.VenuesGrid>
+      ) : (
+        <S.FeedbackMessage>No venues found.</S.FeedbackMessage>
+      )}
     </S.PageContainer>
   );
 };

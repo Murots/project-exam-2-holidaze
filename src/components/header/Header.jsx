@@ -71,7 +71,7 @@ function Header() {
   const location = useLocation();
   const { isAuthenticated } = useAuth();
 
-  const backgroundColor = location.pathname.startsWith("/venues") ? "#5B1A24" : "transparent";
+  const backgroundColor = location.pathname === "/" ? "transparent" : "#5B1A24";
 
   const handleAuthModalOpen = () => {
     setFormType("signin");

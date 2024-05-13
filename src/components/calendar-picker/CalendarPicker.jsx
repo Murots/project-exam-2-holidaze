@@ -15,7 +15,7 @@ function CalendarPicker({ showCalendar, toggleCalendar, onChange, value, label, 
   return (
     <div>
       <PickerButton onClick={toggleCalendar}>
-        {label}: {value.toLocaleDateString()} <ChevronIcon />
+        {label}: {value.toLocaleDateString()} <ChevronIcon isOpen={showCalendar} />
       </PickerButton>
       {showCalendar && <Calendar onChange={onChange} value={value} tileClassName={tileClassName} />}
     </div>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FaChevronDown } from "react-icons/fa";
+import { ChevronIconStyle as GlobalChevronIcon } from "../../styles/GlobalStyles";
 
 export const PickerButton = styled.button`
   display: flex;
@@ -21,7 +21,6 @@ export const PickerButton = styled.button`
   }
 `;
 
-export const ChevronIcon = styled(FaChevronDown)`
+export const ChevronIcon = styled(GlobalChevronIcon)`
   margin-left: 8px;
-  font-size: 12px;
 `;

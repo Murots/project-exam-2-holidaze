@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FaChevronDown } from "react-icons/fa";
 import { BsPersonCircle } from "react-icons/bs";
+import { ChevronIconStyle as BaseChevronIcon } from "../../styles/GlobalStyles";
 
 export const DropdownContainer = styled.div`
   position: relative;
@@ -38,7 +38,7 @@ export const Username = styled.div`
   font-weight: 600;
 `;
 
-export const IconChevron = styled(FaChevronDown)`
+export const ChevronIcon = styled(BaseChevronIcon)`
   margin-left: 8px;
 `;
 
@@ -87,7 +87,7 @@ export const ButtonItem = styled.button`
   text-align: left;
   width: 100%;
   background-color: none;
-  border-widht: none;
+  border-width: none;
 
   &:hover {
     background-color: #f1f1f1;
