@@ -1,4 +1,18 @@
 import styled from "styled-components";
+import { LoaderStyle } from "../../styles/GlobalStyles";
+import { feedbackMessageStyle } from "../../styles/GlobalStyles";
+
+export const FeedbackMessage = styled.p`
+  ${feedbackMessageStyle}
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const Loader = styled.div`
+  ${LoaderStyle}
+`;
 
 export const PageContainer = styled.div`
   padding: 20px;
