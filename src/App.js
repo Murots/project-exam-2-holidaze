@@ -27,6 +27,7 @@ import HomePage from "./pages/home-page/HomePage";
 import VenuesPage from "./pages/venues-page/VenuesPage";
 import DetailsPage from "./pages/details-page/DetailsPage";
 import MyBookingsPage from "./pages/my-bookings-page/MyBookingsPage";
+import MyAccountPage from "./pages/my-account-page/MyAccountPage";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/venues" element={<VenuesPage />} />
           <Route path="/venues/:id" element={<DetailsPage />} />
           <Route path="/my-bookings" element={<MyBookingsPage />} />
+          <Route path="/my-account" element={<MyAccountPage />} />
         </Routes>
       </Layout>
     </AuthProvider>

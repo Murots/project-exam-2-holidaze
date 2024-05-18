@@ -21,6 +21,7 @@ const UserDropdownMenu = ({ isHeaderHovered }) => {
       </S.Button>
       <S.DropdownContent className={isOpen ? "open" : ""}>
         <S.DropdownItem to="/my-bookings">My Bookings</S.DropdownItem>
+        <S.DropdownItem to="/my-account">My Account</S.DropdownItem>
         <S.DropdownItem as="button" onClick={logout}>
           Sign Out
         </S.DropdownItem>
