@@ -32,6 +32,13 @@ export const IconUser = styled(BsPersonCircle)`
   margin-right: 8px;
 `;
 
+export const Avatar = styled.img`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+`;
+
 export const Username = styled.div`
   font-size: 16px;
   font-family: "Playfair Display", Verdana, Geneva, Tahoma;
@@ -57,7 +64,7 @@ export const DropdownContent = styled.div`
   visibility: hidden;
 
   &.open {
-    max-height: 200px;
+    max-height: 270px;
     visibility: visible;
   }
 `;

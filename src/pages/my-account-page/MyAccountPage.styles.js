@@ -1,18 +1,9 @@
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
-import { LoaderStyle } from "../../styles/GlobalStyles";
 import { feedbackMessageStyle } from "../../styles/GlobalStyles";
 
 export const FeedbackMessage = styled.p`
   ${feedbackMessageStyle}
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-export const Loader = styled.div`
-  ${LoaderStyle}
+  margin-right: 20px;
 `;
 
 export const PageContainer = styled.div`
@@ -139,6 +130,12 @@ export const OptionContainer = styled.div`
 export const Description = styled.p`
   margin: 0;
   font-size: 18px;
+`;
+
+export const RedSpan = styled.span`
+  color: red;
+  font-size: 14px;
+  font-style: italic;
 `;
 
 export const RadioLabel = styled.label`
