@@ -31,8 +31,13 @@ function SignIn({ isOpen, onClose, switchToRegister }) {
       if (loginResponse.data && loginResponse.data.accessToken) {
         const apiKeyResponse = await fetchApi("https://v2.api.noroff.dev/auth/create-api-key", "POST", {}, loginResponse.data.accessToken);
         if (apiKeyResponse && apiKeyResponse.data && apiKeyResponse.data.key) {
-          login(loginResponse.data, apiKeyResponse.data.key);
-          onClose();
+          const profileResponse = await fetchApi(`https://v2.api.noroff.dev/holidaze/profiles/${loginResponse.data.name}`, "GET", null, loginResponse.data.accessToken, apiKeyResponse.data.key);
+          if (profileResponse && profileResponse.data) {
+            login(loginResponse.data, apiKeyResponse.data.key, profileResponse.data.venueManager);
+            onClose();
+          } else {
+            setApiError("Failed to obtain profile data");
+          }
         } else {
           setApiError("Failed to obtain API key");
         }

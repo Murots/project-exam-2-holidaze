@@ -1,37 +1,3 @@
-// import React, { createContext, useContext, useState, useEffect } from "react";
-
-// const AuthContext = createContext(null);
-
-// export const AuthProvider = ({ children }) => {
-//   const [isAuthenticated, setIsAuthenticated] = useState(false);
-//   const [username, setUsername] = useState(() => sessionStorage.getItem("username") || "");
-
-//   useEffect(() => {
-//     const token = sessionStorage.getItem("token");
-//     setIsAuthenticated(!!token);
-//   }, []);
-
-//   const login = (data) => {
-//     const { accessToken, name } = data;
-//     if (accessToken) {
-//       sessionStorage.setItem("token", accessToken);
-//       sessionStorage.setItem("username", name);
-//       setIsAuthenticated(true);
-//       setUsername(name);
-//     }
-//   };
-
-//   const logout = () => {
-//     sessionStorage.removeItem("token");
-//     sessionStorage.removeItem("username");
-//     setIsAuthenticated(false);
-//     setUsername("");
-//   };
-
-//   return <AuthContext.Provider value={{ isAuthenticated, username, login, logout }}>{children}</AuthContext.Provider>;
-// };
-
-// export const useAuth = () => useContext(AuthContext);
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext(null);
@@ -39,36 +5,77 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [username, setUsername] = useState(() => sessionStorage.getItem("username") || "");
+  const [token, setToken] = useState(() => sessionStorage.getItem("token") || "");
   const [apiKey, setApiKey] = useState(() => sessionStorage.getItem("apiKey") || "");
+  const [avatarUrl, setAvatarUrl] = useState(() => sessionStorage.getItem("avatarUrl") || "");
+  const [bio, setBio] = useState(() => sessionStorage.getItem("bio") || "");
+  const [venueManager, setVenueManager] = useState(() => sessionStorage.getItem("venueManager") === "true");
 
   useEffect(() => {
-    const token = sessionStorage.getItem("token");
-    const apiKey = sessionStorage.getItem("apiKey");
-    setIsAuthenticated(!!token && !!apiKey);
+    const storedToken = sessionStorage.getItem("token");
+    const storedApiKey = sessionStorage.getItem("apiKey");
+    setIsAuthenticated(!!storedToken && !!storedApiKey);
   }, []);
 
-  const login = (data, apiKey) => {
-    const { accessToken, name } = data;
-    if (accessToken && apiKey) {
+  const login = (data, apiKey, venueManager) => {
+    const { accessToken, name, avatar, bio } = data;
+    if (accessToken && apiKey && avatar) {
       sessionStorage.setItem("token", accessToken);
       sessionStorage.setItem("username", name);
       sessionStorage.setItem("apiKey", apiKey);
+      sessionStorage.setItem("avatarUrl", avatar.url);
+      sessionStorage.setItem("bio", bio);
+      sessionStorage.setItem("venueManager", venueManager);
       setIsAuthenticated(true);
       setUsername(name);
+      setToken(accessToken);
       setApiKey(apiKey);
+      setAvatarUrl(avatar.url);
+      setBio(bio);
+      setVenueManager(venueManager);
     }
   };
 
   const logout = () => {
-    sessionStorage.removeItem("token");
-    sessionStorage.removeItem("username");
-    sessionStorage.removeItem("apiKey");
+    sessionStorage.clear();
     setIsAuthenticated(false);
     setUsername("");
+    setToken("");
     setApiKey("");
+    setAvatarUrl("");
+    setBio("");
+    setVenueManager(false);
   };
 
-  return <AuthContext.Provider value={{ isAuthenticated, username, apiKey, login, logout }}>{children}</AuthContext.Provider>;
+  const updateAvatar = (newAvatarUrl) => {
+    sessionStorage.setItem("avatarUrl", newAvatarUrl);
+    setAvatarUrl(newAvatarUrl);
+  };
+
+  const updateBio = (newBio) => {
+    sessionStorage.setItem("bio", newBio);
+    setBio(newBio);
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{
+        isAuthenticated,
+        username,
+        token,
+        apiKey,
+        avatarUrl,
+        bio,
+        venueManager,
+        login,
+        logout,
+        updateAvatar,
+        updateBio,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => useContext(AuthContext);
