@@ -42,3 +42,22 @@ export const FeedbackMessage = styled.p`
 export const Loader = styled.div`
   ${LoaderStyle}
 `;
+
+export const SortContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+`;
+
+export const SortLabel = styled.label`
+  font-size: 16px;
+  margin-right: 10px;
+`;
+
+export const SortSelect = styled.select`
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+`;
