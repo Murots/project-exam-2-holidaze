@@ -41,7 +41,7 @@ export const UserInfo = styled.div`
   flex-direction: column;
 `;
 
-export const UserName = styled.h2`
+export const UserName = styled.h3`
   font-size: 24px;
   color: #333;
   margin-bottom: 10px;

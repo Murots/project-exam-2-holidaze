@@ -26,7 +26,7 @@ function DetailsPage() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchApi(`https://v2.api.noroff.dev/holidaze/venues/${id}?_bookings=true`, "GET")
+    fetchApi(`https://v2.api.noroff.dev/holidaze/venues/${id}?_bookings=true&_owner=true`, "GET")
       .then((result) => {
         if (result.data) {
           setVenue(result.data);
@@ -141,8 +141,15 @@ function DetailsPage() {
           </S.FeaturesList>
         </S.Features>
         <p>
-          <strong>Location:</strong> {`${venue.location.address}, ${venue.location.city}, ${venue.location.country}`}
+          <strong>Location:</strong> {`${venue.location.city}, ${venue.location.country}`}
         </p>
+        <S.OwnerContainer>
+          <S.OwnerAvatar src={venue.owner.avatar.url} alt={venue.owner.avatar.alt || "Owner avatar"} />
+          <div>
+            <S.OwnerName>{venue.owner.name}</S.OwnerName>
+            <S.OwnerBio>{venue.owner.bio || "No bio available"}</S.OwnerBio>
+          </div>
+        </S.OwnerContainer>
       </S.Content>
     </S.Container>
   );

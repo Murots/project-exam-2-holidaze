@@ -204,3 +204,31 @@ export const FeaturesList = styled.ul`
   // list-style: none;
   // padding: 0;
 `;
+
+export const OwnerContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+`;
+
+export const OwnerAvatar = styled.img`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+`;
+
+export const OwnerName = styled.h3`
+  margin: 0;
+  font-size: 18px;
+`;
+
+export const OwnerBio = styled.p`
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  color: #666;
+`;
