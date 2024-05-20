@@ -53,6 +53,10 @@ export const Textarea = styled.textarea`
 export const InlineGroup = styled.div`
   display: flex;
   gap: 50px;
+
+  @media (max-width: 500px) {
+    display: block;
+  }
 `;
 
 export const InlineLabel = styled.label`
