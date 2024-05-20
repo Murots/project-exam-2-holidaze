@@ -9,7 +9,7 @@ import { useAuth } from "../../contexts/AuthContext";
 const schema = yup
   .object({
     name: yup.string().required("Name is required"),
-    description: yup.string().min(20, "Description must be at least 20 characters").max(400, "Description cannot be more than 400 characters").required("Description is required"),
+    description: yup.string().min(20, "Description must be at least 20 characters").max(1000, "Description cannot be more than 1000 characters").required("Description is required"),
     media: yup
       .array()
       .of(
@@ -36,9 +36,11 @@ const schema = yup
   .required();
 
 const CreateVenue = () => {
-  const { fetchApi, isLoading, isError } = useApi();
+  const { fetchApi, isLoading } = useApi();
   const { token, apiKey } = useAuth();
   const [mediaPreview, setMediaPreview] = useState("");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const {
     register,
@@ -51,11 +53,14 @@ const CreateVenue = () => {
 
   const onSubmit = async (data) => {
     try {
-      const url = "https://v2.api.noroff.dev/holidaze/venues";
+      const url = "https://v2.api.noroff.dev/hoolidaze/venues";
       await fetchApi(url, "POST", data, token, apiKey);
-      alert("Venue created successfully!");
+      setFeedbackMessage("Venue created successfully!");
+      setIsError(false);
     } catch (error) {
       console.error("Error creating venue:", error);
+      setFeedbackMessage("Error creating venue. Please try again later.");
+      setIsError(true);
     }
   };
 
@@ -139,10 +144,10 @@ const CreateVenue = () => {
             Pets
           </S.CheckboxLabel>
         </S.CheckboxGroup>
+        {feedbackMessage && <S.FeedbackMessage error={isError}>{feedbackMessage}</S.FeedbackMessage>}
         <S.SubmitButton type="submit" disabled={isLoading}>
           Create Venue
         </S.SubmitButton>
-        {isError && <S.ErrorMessage>Error creating venue. Please try again.</S.ErrorMessage>}
       </S.Form>
     </S.Container>
   );
