@@ -104,3 +104,13 @@ export const CheckboxLabel = styled.label`
   color: black;
   margin-top: 5px;
 `;
+
+export const FixedText = styled.div`
+  padding: 10px;
+  font-size: 14px;
+  color: black;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  width: 100%;
+`;

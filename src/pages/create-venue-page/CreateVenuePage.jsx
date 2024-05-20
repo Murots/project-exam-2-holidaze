@@ -30,7 +30,7 @@ const schema = yup
     }),
     location: yup.object({
       city: yup.string().required("City is required"),
-      country: yup.string().required("Country is required"),
+      country: yup.string().default("Norway").required(),
     }),
   })
   .required();
@@ -52,8 +52,10 @@ const CreateVenue = () => {
   });
 
   const onSubmit = async (data) => {
+    data.location.country = "Norway";
+
     try {
-      const url = "https://v2.api.noroff.dev/hoolidaze/venues";
+      const url = "https://v2.api.noroff.dev/holidaze/venues";
       await fetchApi(url, "POST", data, token, apiKey);
       setFeedbackMessage("Venue created successfully!");
       setIsError(false);
@@ -113,8 +115,8 @@ const CreateVenue = () => {
           </S.InlineLabel>
           <S.InlineLabel>
             Country:
-            <S.Input {...register("location.country")} />
-            <S.ErrorMessage>{errors.location?.country?.message}</S.ErrorMessage>
+            <S.FixedText>Norway</S.FixedText>
+            <input type="hidden" value="Norway" {...register("location.country")} />
           </S.InlineLabel>
         </S.InlineGroup>
         <div>
