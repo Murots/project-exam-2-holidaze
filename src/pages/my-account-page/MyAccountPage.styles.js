@@ -106,6 +106,7 @@ export const ButtonContainer = styled.div`
 
 export const UpdateButton = styled.button`
   padding: 10px 20px;
+  font-size: 16px;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -141,7 +142,7 @@ export const RedSpan = styled.span`
 export const RadioLabel = styled.label`
   background-color: #f1f1f1;
   color: #666;
-  padding: 10px 16px;
+  padding: 10px 20px;
   font-family: Arial, sans-serif;
   border-radius: 20px;
   border: 2px solid #ddd;
