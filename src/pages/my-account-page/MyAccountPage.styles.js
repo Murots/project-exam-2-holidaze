@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { feedbackMessageStyle } from "../../styles/GlobalStyles";
+import { feedbackMessageStyle, ActionButton } from "../../styles/GlobalStyles";
 
 export const FeedbackMessage = styled.p`
   ${feedbackMessageStyle}
@@ -105,17 +105,8 @@ export const ButtonContainer = styled.div`
 `;
 
 export const UpdateButton = styled.button`
+  ${ActionButton}
   padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #367c39;
-  }
 `;
 
 export const OptionContainer = styled.div`
