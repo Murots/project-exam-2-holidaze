@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { LoaderStyle } from "../../styles/GlobalStyles";
-import { feedbackMessageStyle } from "../../styles/GlobalStyles";
+import { feedbackMessageStyle, LoaderStyle } from "../../styles/GlobalStyles";
 
 export const FeedbackMessage = styled.p`
   ${feedbackMessageStyle}

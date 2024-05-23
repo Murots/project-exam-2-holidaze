@@ -9,10 +9,10 @@ import { handleUpdate, handleDelete } from "../../utils/my-venues-utils/myVenues
 
 const validationSchema = yup.object().shape({
   name: yup.string().required("Name is required"),
-  description: yup.string().required("Description is required"),
-  price: yup.number().required("Price is required").positive().integer(),
-  maxGuests: yup.number().required("Max Guests is required").positive().integer(),
-  rating: yup.number().required("Rating is required").min(1).max(5),
+  description: yup.string().min(20, "Description must be at least 20 characters").max(1000, "Description cannot be more than 1000 characters").required("Description is required"),
+  price: yup.number().min(0, "Price must be at least 0").max(10000, "Price cannot exceed 10000").required("Price is required"),
+  maxGuests: yup.number().min(1, "Max guests must be at least 1").max(50, "Max guests cannot exceed 50").required("Max guests is required"),
+  rating: yup.number().min(1, "Rating must be at least 1").max(5, "Rating cannot exceed 5"),
   media: yup.array().of(
     yup.object().shape({
       url: yup.string().url("Must be a valid URL").required("Image URL is required"),
@@ -63,22 +63,22 @@ const MyVenuesExpandable = ({ venue, onUpdate }) => {
         <S.VenueDetailsContent className={isOpen ? "open" : ""}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Controller name="media[0].url" control={control} render={({ field }) => <S.Input {...field} placeholder="Image URL" />} />
-            {errors.media?.[0]?.url && <p>{errors.media[0].url.message}</p>}
+            <S.ErrorMessage>{errors.media?.[0]?.url && <p>{errors.media[0].url.message}</p>}</S.ErrorMessage>
 
             <Controller name="description" control={control} render={({ field }) => <S.TextArea {...field} placeholder="Description" />} />
-            {errors.description && <p>{errors.description.message}</p>}
+            <S.ErrorMessage>{errors.description && <p>{errors.description.message}</p>}</S.ErrorMessage>
 
             <Controller name="price" control={control} render={({ field }) => <S.Input type="number" {...field} placeholder="Price" />} />
-            {errors.price && <p>{errors.price.message}</p>}
+            <S.ErrorMessage>{errors.price && <p>{errors.price.message}</p>}</S.ErrorMessage>
 
             <Controller name="maxGuests" control={control} render={({ field }) => <S.Input type="number" {...field} placeholder="Max Guests" />} />
-            {errors.maxGuests && <p>{errors.maxGuests.message}</p>}
+            <S.ErrorMessage>{errors.maxGuests && <p>{errors.maxGuests.message}</p>}</S.ErrorMessage>
 
             <Controller name="rating" control={control} render={({ field }) => <S.Input type="number" {...field} placeholder="Rating" />} />
-            {errors.rating && <p>{errors.rating.message}</p>}
+            <S.ErrorMessage>{errors.rating && <p>{errors.rating.message}</p>}</S.ErrorMessage>
 
             <Controller name="location.city" control={control} render={({ field }) => <S.Input {...field} placeholder="City" />} />
-            {errors.location?.city && <p>{errors.location.city.message}</p>}
+            <S.ErrorMessage>{errors.location?.city && <p>{errors.location.city.message}</p>}</S.ErrorMessage>
 
             <S.CheckboxLabel>
               <Controller name="meta.wifi" control={control} render={({ field }) => <input type="checkbox" {...field} checked={field.value} />} />
@@ -141,7 +141,6 @@ const MyVenuesExpandable = ({ venue, onUpdate }) => {
         <S.DelButton onClick={onDelete} disabled={isLoading}>
           Delete
         </S.DelButton>
-        {isError && <S.FeedbackMessage error>Failed to update venue. Please try again later.</S.FeedbackMessage>}
       </S.VenueDetailsContent>
     </S.VenueDetailsContainer>
   );

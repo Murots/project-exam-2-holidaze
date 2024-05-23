@@ -17,6 +17,7 @@ const MyVenuesPage = () => {
         setVenues(result.data.venues || []);
       } catch (error) {
         console.error("Failed to fetch venues:", error);
+        setVenues([]);
       }
     };
     fetchVenues();
@@ -24,12 +25,22 @@ const MyVenuesPage = () => {
 
   const onUpdate = (updatedVenue) => updateVenueList(updatedVenue, setVenues);
 
+  if (isLoading) {
+    return <S.Loader />;
+  }
+
+  if (isError) {
+    return (
+      <S.Container>
+        <S.FeedbackMessage error>Network error. Please try again later.</S.FeedbackMessage>
+      </S.Container>
+    );
+  }
+
   return (
     <S.Container>
       <S.Heading>My Venues</S.Heading>
-      {isLoading && <S.Loader />}
-      {isError && <S.FeedbackMessage error>Failed to load venues. Please try again later.</S.FeedbackMessage>}
-      {venues.length === 0 && !isLoading && <S.FeedbackMessage error>No venues found.</S.FeedbackMessage>}
+      {!isLoading && !isError && venues.length === 0 && <S.FeedbackMessage error>No venues found.</S.FeedbackMessage>}
       {venues.map((venue) => (
         <MyVenuesExpandable key={venue.id} venue={venue} onUpdate={onUpdate} />
       ))}

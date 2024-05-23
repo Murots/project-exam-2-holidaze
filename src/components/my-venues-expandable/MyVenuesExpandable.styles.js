@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ChevronIconStyle as BaseChevronIcon } from "../../styles/GlobalStyles";
-import { ActionButton } from "../../styles/GlobalStyles";
+import { feedbackMessageStyle, ActionButton } from "../../styles/GlobalStyles";
 
 export const VenueDetailsContainer = styled.div`
   background: #fff;
@@ -83,7 +83,7 @@ export const DelButton = styled.button`
 `;
 
 export const FeedbackMessage = styled.p`
-  color: ${(props) => (props.error ? "red" : "black")};
+  ${feedbackMessageStyle}
 `;
 
 export const CheckboxLabel = styled.label`
@@ -99,4 +99,10 @@ export const CheckboxLabel = styled.label`
 export const ChevronIcon = styled(BaseChevronIcon)`
   transition: transform 0.3s ease;
   transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "rotate(0deg)")};
+`;
+
+export const ErrorMessage = styled.p`
+  color: red;
+  font-size: 12px;
+  margin-top: -10px;
 `;
