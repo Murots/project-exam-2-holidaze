@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { feedbackMessageStyle } from "../../styles/GlobalStyles";
+import { feedbackMessageStyle, ActionButton } from "../../styles/GlobalStyles";
 
 export const FeedbackMessage = styled.p`
   ${feedbackMessageStyle}
@@ -70,19 +70,11 @@ export const ErrorMessage = styled.p`
 `;
 
 export const SubmitButton = styled.button`
+  ${ActionButton}
   padding: 12px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4caf50;
-  border: none;
-  border-radius: 4px;
   cursor: pointer;
   margin: 0 auto 50px auto;
   width: 250px;
-
-  &:hover {
-    background-color: #45a049;
-  }
 `;
 
 export const ImagePreview = styled.img`

@@ -45,7 +45,7 @@ const MyBookings = () => {
   return (
     <S.PageContainer>
       <S.Heading>My Bookings</S.Heading>
-      {bookings.length > 0 ? bookings.map((booking) => <MyBookingsExpandable key={booking.id} booking={booking} />) : <S.FeedbackMessage>No bookings found.</S.FeedbackMessage>}
+      {bookings.length > 0 ? bookings.map((booking) => <MyBookingsExpandable key={booking.id} booking={booking} />) : <S.FeedbackMessage error>No bookings found.</S.FeedbackMessage>}
     </S.PageContainer>
   );
 };

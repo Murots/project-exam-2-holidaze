@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
-import { feedbackMessageStyle } from "../../styles/GlobalStyles";
-import { LoaderStyle } from "../../styles/GlobalStyles";
+import { feedbackMessageStyle, LoaderStyle, ActionButton } from "../../styles/GlobalStyles";
+// import { LoaderStyle } from "../../styles/GlobalStyles";
 
 export const Loader = styled.div`
   ${LoaderStyle}
@@ -136,21 +136,12 @@ export const Label = styled.label`
 `;
 
 export const BookButton = styled.button`
-  background-color: #4caf50;
-  color: white;
-  border: none;
+  ${ActionButton}
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
   margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-
-  &:hover {
-    background-color: #45a049;
-  }
 
   &:disabled {
     background-color: #c8c8c8;
@@ -162,6 +153,33 @@ export const BookButton = styled.button`
     width: 100%;
   }
 `;
+// export const BookButton = styled.button`
+//   background-color: #4caf50;
+//   color: white;
+//   border: none;
+//   padding: 10px 20px;
+//   text-align: center;
+//   text-decoration: none;
+//   display: inline-block;
+//   font-size: 16px;
+//   margin: 4px 2px;
+//   cursor: pointer;
+//   border-radius: 4px;
+
+//   &:hover {
+//     background-color: #45a049;
+//   }
+
+//   &:disabled {
+//     background-color: #c8c8c8;
+//     cursor: not-allowed;
+//     color: #a8a8a8;
+//   }
+
+//   @media (max-width: 800px) {
+//     width: 100%;
+//   }
+// `;
 
 export const PriceContainer = styled.div`
   background-color: #e2e2e2;

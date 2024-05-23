@@ -132,7 +132,7 @@ function DetailsPage() {
           <strong>Maximum guests:</strong> {venue.maxGuests}
         </p>
         <S.Features>
-          <strong>Features:</strong>
+          <strong>Facilities:</strong>
           <S.FeaturesList>
             {venue.meta.wifi && <li>Wifi</li>}
             {venue.meta.parking && <li>Parking</li>}

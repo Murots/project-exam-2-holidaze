@@ -29,7 +29,7 @@ import DetailsPage from "./pages/details-page/DetailsPage";
 import MyBookingsPage from "./pages/my-bookings-page/MyBookingsPage";
 import MyAccountPage from "./pages/my-account-page/MyAccountPage";
 import CreateVenuePage from "./pages/create-venue-page/CreateVenuePage";
-// import MyVenuesPage from "./pages/my-venues-page/MyVenuesPage";
+import MyVenuesPage from "./pages/my-venues-page/MyVenuesPage";
 
 function App() {
   return (
@@ -41,7 +41,7 @@ function App() {
           <Route path="/venues/:id" element={<DetailsPage />} />
           <Route path="/my-bookings" element={<MyBookingsPage />} />
           <Route path="/my-account" element={<MyAccountPage />} />
-          {/* <Route path="/my-venues" element={<MyVenuesPage />} /> */}
+          <Route path="/my-venues" element={<MyVenuesPage />} />
           <Route path="/create-venue" element={<CreateVenuePage />} />
         </Routes>
       </Layout>

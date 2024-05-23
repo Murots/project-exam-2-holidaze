@@ -33,3 +33,16 @@ export const feedbackMessageStyle = css`
   color: ${(props) => (props.error ? "red" : "green")};
   font-size: 14px;
 `;
+
+export const ActionButton = css`
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #45a049;
+  }
+`;
