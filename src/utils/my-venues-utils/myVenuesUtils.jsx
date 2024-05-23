@@ -41,3 +41,13 @@ export const updateVenueList = (updatedVenue, setVenues) => {
     setVenues((prevVenues) => prevVenues.map((venue) => (venue.id === updatedVenue.id ? updatedVenue : venue)));
   }
 };
+
+export const fetchBookingsForVenue = async (venueId, fetchApi, token, apiKey) => {
+  try {
+    const result = await fetchApi(`https://v2.api.noroff.dev/holidaze/venues/${venueId}?_bookings=true`, "GET", null, token, apiKey);
+    return result.data.bookings || [];
+  } catch (error) {
+    console.error("Failed to fetch bookings:", error);
+    return [];
+  }
+};

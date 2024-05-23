@@ -5,7 +5,8 @@ import * as yup from "yup";
 import * as S from "./MyVenuesExpandable.styles";
 import useApi from "../../hooks/useApi";
 import { useAuth } from "../../contexts/AuthContext";
-import { handleUpdate, handleDelete } from "../../utils/my-venues-utils/myVenuesUtils";
+import { handleUpdate, handleDelete, fetchBookingsForVenue } from "../../utils/my-venues-utils/myVenuesUtils";
+import BookingsModal from "../../components/bookings-modal/BookingsModal";
 
 const validationSchema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -34,6 +35,8 @@ const MyVenuesExpandable = ({ venue, onUpdate }) => {
   const [editMode, setEditMode] = useState(false);
   const { token, apiKey } = useAuth();
   const { fetchApi, isLoading, isError } = useApi();
+  const [showModal, setShowModal] = useState(false);
+  const [bookings, setBookings] = useState([]);
 
   const {
     control,
@@ -52,6 +55,12 @@ const MyVenuesExpandable = ({ venue, onUpdate }) => {
 
   const onSubmit = (data) => handleUpdate(data, venue.id, fetchApi, token, apiKey, onUpdate, setEditMode);
   const onDelete = () => handleDelete(venue.id, fetchApi, token, apiKey, onUpdate);
+
+  const openModal = async () => {
+    const bookingsData = await fetchBookingsForVenue(venue.id, fetchApi, token, apiKey);
+    setBookings(bookingsData);
+    setShowModal(true);
+  };
 
   if (editMode) {
     return (
@@ -137,10 +146,16 @@ const MyVenuesExpandable = ({ venue, onUpdate }) => {
           <strong>Facilities:</strong> Wifi: {venue.meta.wifi ? "Yes" : "No"}, Parking: {venue.meta.parking ? "Yes" : "No"}, Breakfast: {venue.meta.breakfast ? "Yes" : "No"}, Pets:{" "}
           {venue.meta.pets ? "Yes" : "No"}
         </S.VenueInfoText>
-        <S.Button onClick={toggleEditMode}>Edit</S.Button>
-        <S.DelButton onClick={onDelete} disabled={isLoading}>
-          Delete
-        </S.DelButton>
+        <S.ButtonsContainer>
+          <S.LinkButton onClick={openModal}>View Bookings</S.LinkButton>
+          <div>
+            <S.Button onClick={toggleEditMode}>Edit</S.Button>
+            <S.DelButton onClick={onDelete} disabled={isLoading}>
+              Delete
+            </S.DelButton>
+          </div>
+        </S.ButtonsContainer>
+        {showModal && <BookingsModal bookings={bookings} onClose={() => setShowModal(false)} />}
       </S.VenueDetailsContent>
     </S.VenueDetailsContainer>
   );

@@ -59,29 +59,6 @@ export const TextArea = styled.textarea`
   resize: vertical;
 `;
 
-export const Button = styled.button`
-  ${ActionButton}
-  padding: 10px 20px;
-  margin-top: 10px;
-
-  &:disabled {
-    background-color: #c8c8c8;
-    cursor: not-allowed;
-  }
-`;
-
-export const DelButton = styled.button`
-  ${ActionButton}
-  background-color: #ad2020;
-  padding: 10px 20px;
-  margin-top: 10px;
-  margin-left: 30px;
-
-  &:hover {
-    background-color: #b91b1b;
-  }
-`;
-
 export const FeedbackMessage = styled.p`
   ${feedbackMessageStyle}
 `;
@@ -105,4 +82,44 @@ export const ErrorMessage = styled.p`
   color: red;
   font-size: 12px;
   margin-top: -10px;
+`;
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const LinkButton = styled.button`
+  font-size: 14px;
+  color: #5b1a24;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  text-decoration: underline;
+  padding: 0;
+`;
+
+export const Button = styled.button`
+  ${ActionButton}
+  padding: 10px 20px;
+  margin-top: 10px;
+
+  &:disabled {
+    background-color: #c8c8c8;
+    cursor: not-allowed;
+  }
+`;
+
+export const DelButton = styled.button`
+  ${ActionButton}
+  background-color: #ad2020;
+  padding: 10px 20px;
+  margin-top: 10px;
+  margin-left: 30px;
+
+  &:hover {
+    background-color: #b91b1b;
+  }
 `;
