@@ -20,19 +20,11 @@ function Footer() {
             <FaYoutube />
           </S.IconLink>
         </S.Icons>
-      </S.Section>
-      <S.Section>
-        <S.Title>Contact</S.Title>
         <S.ContactInfo>
           Email: holidaze@email.com
           <br />
           Phone: +47 xxx xx xxx
         </S.ContactInfo>
-      </S.Section>
-      <S.Section>
-        <S.Title>Quick Links</S.Title>
-        <S.Link href="#">About Us</S.Link>
-        <S.Link href="#">Become a Manager</S.Link>
       </S.Section>
       <S.CopyRight>© {currentYear} Holidaze. All rights reserved.</S.CopyRight>
     </S.Container>

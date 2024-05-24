@@ -45,6 +45,7 @@ export const UserName = styled.h3`
   font-size: 24px;
   color: #333;
   margin-bottom: 10px;
+  font-weight: 400;
 `;
 
 export const UserBio = styled.p`

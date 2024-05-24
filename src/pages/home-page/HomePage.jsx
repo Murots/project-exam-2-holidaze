@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as S from "./HomePage.styles";
 import useApi from "../../hooks/useApi";
 import SearchCard from "../../components/search-card/SearchCard";
+import { filterValidVenues } from "../../utils/venues-utils/venuesUtils";
 
 function HomePage() {
   const { fetchApi } = useApi();
@@ -18,7 +19,7 @@ function HomePage() {
         try {
           const result = await fetchApi(`https://v2.api.noroff.dev/holidaze/venues/search?q=${query}`);
           if (result.data && Array.isArray(result.data)) {
-            const filteredVenues = filterVenues(result.data);
+            const filteredVenues = filterValidVenues(result.data);
             setSearchResults(filteredVenues);
           }
         } catch (error) {
@@ -30,30 +31,6 @@ function HomePage() {
       setSearchResults([]);
     }
   }, [query, fetchApi]);
-
-  const filterVenues = (venues) => {
-    const validVenues = venues.filter((venue) => {
-      const hasValidMedia = venue.media && venue.media.length > 0 && !venue.media[0].url.includes("string");
-      const hasValidPrice = venue.price != null && !venue.price.toString().includes("string");
-      const hasValidName = venue.name && !venue.name.includes("string");
-      const hasValidLocation = venue.location && venue.location.city && !venue.location.city.includes("string");
-      const hasValidCountry = venue.location && (venue.location.country === "Norway" || venue.location.country === "Norge");
-
-      return hasValidMedia && hasValidPrice && hasValidName && hasValidLocation && hasValidCountry;
-    });
-
-    const uniqueImageUrls = new Set();
-    const uniqueVenues = validVenues.filter((venue) => {
-      const imageUrl = venue.media[0].url;
-      if (!uniqueImageUrls.has(imageUrl) && !imageUrl.includes("string")) {
-        uniqueImageUrls.add(imageUrl);
-        return true;
-      }
-      return false;
-    });
-
-    return uniqueVenues;
-  };
 
   const renderSearchResults = () => {
     if (searchResults.length === 0) {

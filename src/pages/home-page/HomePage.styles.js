@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const FullScreenBackground = styled.div`
   height: 100vh;
   width: 100vw;
-  background-image: url("/images/north-compressed.jpg");
+  background-image: url("/images/north5-compressed.jpg");
   background-size: cover;
-  background-position: center 35%;
+  background-position: center 0%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,8 +20,8 @@ export const HomePageHeading = styled.h1`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 0 20px;
   white-space: nowrap;
+  margin: -80px 0 0 -25px;
 `;
 
 export const SearchContainer = styled.div`
@@ -39,6 +39,7 @@ export const StylishWord1 = styled.span`
 export const StylishWord2 = styled.span`
   font-family: "Pacifico", Verdana, Geneva, Tahoma;
   margin: 0 5px;
+  font-weight: 400;
 `;
 
 export const SearchInput = styled.input`
@@ -48,6 +49,7 @@ export const SearchInput = styled.input`
   margin-top: 20px;
   border-radius: 5px;
   border: 2px solid #ddd;
+  margin-left: -25px;
   &:focus {
     border-color: #0056b3;
     outline: none;
@@ -73,6 +75,8 @@ export const ResultsDropdown = styled.div`
   overflow-y: auto; 
   border-radius: 4px; 
   overflow-x: hidden; 
+  margin-left: -25px;
+  margin-top: 5px;
 
   @media (min-width: 700px) {
     width: 60%;

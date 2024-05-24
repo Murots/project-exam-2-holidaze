@@ -18,10 +18,14 @@ function SearchCard({ venue }) {
         <S.VenueCity>{venue.location.city}</S.VenueCity>
         <S.Details>
           <S.VenuePrice>{price} NOK</S.VenuePrice>
-          {rating && (
+          {rating ? (
             <S.RatingBox>
               <S.Rating>{rating}</S.Rating>
               <S.Icon src="/images/mountains-icon.png" alt="Rating icon" />
+            </S.RatingBox>
+          ) : (
+            <S.RatingBox>
+              <S.Rating>N/A</S.Rating>
             </S.RatingBox>
           )}
         </S.Details>

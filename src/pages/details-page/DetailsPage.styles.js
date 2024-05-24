@@ -216,6 +216,7 @@ export const OwnerAvatar = styled.img`
 export const OwnerName = styled.h3`
   margin: 0;
   font-size: 18px;
+  font-weight: 400;
 `;
 
 export const OwnerBio = styled.p`

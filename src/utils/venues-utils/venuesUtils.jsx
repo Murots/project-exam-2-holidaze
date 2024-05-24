@@ -28,3 +28,28 @@ export const sortVenues = (venues, criteria) => {
   }
   return sortedVenues;
 };
+
+// Filter venues based on a specified criteria
+export const filterValidVenues = (venues) => {
+  const validVenues = venues.filter((venue) => {
+    const hasValidMedia = venue.media && venue.media.length > 0 && !venue.media[0].url.includes("string");
+    const hasValidPrice = venue.price != null && !venue.price.toString().includes("string");
+    const hasValidName = venue.name && !venue.name.includes("string");
+    const hasValidLocation = venue.location && venue.location.city && !venue.location.city.includes("string");
+    const hasValidCountry = venue.location && (venue.location.country === "Norway" || venue.location.country === "Norge");
+
+    return hasValidMedia && hasValidPrice && hasValidName && hasValidLocation && hasValidCountry;
+  });
+
+  const uniqueImageUrls = new Set();
+  const uniqueVenues = validVenues.filter((venue) => {
+    const imageUrl = venue.media[0].url;
+    if (!uniqueImageUrls.has(imageUrl) && !imageUrl.includes("string")) {
+      uniqueImageUrls.add(imageUrl);
+      return true;
+    }
+    return false;
+  });
+
+  return uniqueVenues;
+};
