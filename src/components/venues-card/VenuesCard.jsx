@@ -9,10 +9,6 @@ const VenuesCard = ({ venue, rating }) => {
   const handleClick = () => {
     navigate(`/venues/${venue.id}`);
   };
-  // const imageUrl = media.length > 0 ? media[0].url : "https://via.placeholder.com/300";
-  // const imageAlt = media.length > 0 ? media[0].alt || "Venue Image" : "No image available";
-  // const imageUrl = media.length > 0 ? media[0].url : "https://via.placeholder.com/300";
-  // const imageAlt = media.length > 0 ? media[0].alt || "Venue Image" : "No image available";
 
   return (
     <S.Card rating={rating} onClick={handleClick}>

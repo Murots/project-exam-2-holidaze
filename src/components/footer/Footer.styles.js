@@ -30,12 +30,12 @@ export const Container = styled.footer`
 `;
 
 export const Section = styled.div`
-  margin: 10px;
-  flex: 1;
+  width: 100%;
 `;
 
 export const Title = styled.h3`
   margin-bottom: 10px;
+  font-weight: 400;
 `;
 
 export const Icons = styled.div`
@@ -55,18 +55,8 @@ export const IconLink = styled.a`
 `;
 
 export const ContactInfo = styled.p`
-  font-size: 14px;
-`;
-
-export const Link = styled.a`
-  display: block;
-  color: white;
-  text-decoration: none;
-  margin: 5px 0;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  font-size: 12px;
+  margin-bottom: 0px;
 `;
 
 export const CopyRight = styled.p`
