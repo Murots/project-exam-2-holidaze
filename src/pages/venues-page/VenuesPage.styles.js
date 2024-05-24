@@ -16,12 +16,12 @@ export const VenuesGrid = styled.div`
   grid-auto-flow: dense;
   margin-bottom: 50px;
 
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
+  @media (max-width: 1068px) {
+    grid-template-columns: repeat(6, 1fr);
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 650px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 

@@ -18,18 +18,15 @@ export const HomePageHeading = styled.h1`
   font-size: 2.5rem;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
   display: flex;
+  flex-direction: row; // Default to row
   align-items: center;
   justify-content: center;
   white-space: nowrap;
   margin: -80px 0 0 -25px;
-`;
 
-export const SearchContainer = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @media (max-width: 550px) {
+    flex-direction: column; // Stack the text vertically on small screens
+  }
 `;
 
 export const StylishWord1 = styled.span`
@@ -38,8 +35,21 @@ export const StylishWord1 = styled.span`
 
 export const StylishWord2 = styled.span`
   font-family: "Pacifico", Verdana, Geneva, Tahoma;
-  margin: 0 5px;
+  margin: 0 5px; // Maintain horizontal spacing for larger screens
   font-weight: 400;
+
+  @media (max-width: 550px) {
+    display: block; // Ensure full width usage
+    margin: 0; // Remove horizontal margins on small screens
+  }
+`;
+
+export const SearchContainer = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const SearchInput = styled.input`

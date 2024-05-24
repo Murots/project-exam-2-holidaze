@@ -18,9 +18,6 @@ const NavLinks = ({ onClose, isOpen, isHeaderHovered }) => {
       <S.StyledLink to="/venues" onClick={onClose} isHovered={isHeaderHovered}>
         Venues
       </S.StyledLink>
-      <S.StyledLink to="/contact" onClick={onClose} isHovered={isHeaderHovered}>
-        Contact
-      </S.StyledLink>
     </S.NavContainer>
   );
 };
