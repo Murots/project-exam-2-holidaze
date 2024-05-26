@@ -2,6 +2,20 @@ import React from "react";
 import * as S from "./SearchCard.styles";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * Represents a card component for displaying brief information about a venue.
+ * It provides a visual and interactive summary of a venue including its image, name, location, price, and rating.
+ * Clicking on the card navigates the user to a detailed page for that specific venue.
+ *
+ * @module SearchCard
+ * @param {Object} props
+ * @param {Object} props.venue - The venue data object.
+ * @returns {React.Component} The SearchCard component which acts as an interactive element for accessing detailed venue information.
+ * @example
+ * return (
+ *   <SearchCard venue={venueData} />
+ * )
+ */
 function SearchCard({ venue }) {
   const { id, name, media, price, location, rating } = venue;
   const navigate = useNavigate();

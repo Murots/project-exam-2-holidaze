@@ -3,11 +3,22 @@ import { Helmet } from "react-helmet";
 import useApi from "../../hooks/useApi";
 import * as S from "./MyBookingsPage.styles";
 import MyBookingsExpandable from "../../components/my-bookings-expandable/MyBookingsExpandable";
+import { useAuth } from "../../contexts/AuthContext";
 
+/**
+ * Represents the component that displays all the bookings a user has made on the Holidaze platform.
+ * Utilizes `useAuth` to retrieve the current user's authentication details and `useApi` to fetch booking data from a specified endpoint.
+ * Each booking is displayed using the `MyBookingsExpandable` component, which allows users to view detailed information about their bookings.
+ *
+ * @module MyBookings
+ * @returns {React.Component} The MyBookings component, which provides an interface for users to review all their bookings.
+ * @example
+ * return (
+ *   <MyBookings />
+ * )
+ */
 const MyBookings = () => {
-  const username = sessionStorage.getItem("username");
-  const token = sessionStorage.getItem("token");
-  const apiKey = sessionStorage.getItem("apiKey");
+  const { username, token, apiKey } = useAuth();
   const url = `https://v2.api.noroff.dev/holidaze/profiles/${username}?_bookings=true`;
 
   const { fetchApi, isLoading, isError } = useApi();

@@ -6,6 +6,18 @@ import * as S from "./MyVenuesPage.styles";
 import MyVenuesExpandable from "../../components/my-venues-expandable/MyVenuesExpandable";
 import { updateVenueList } from "../../utils/my-venues-utils/myVenuesUtils";
 
+/**
+ * Represents the component that displays all the venues managed by a user on the Holidaze platform.
+ * Utilizes `useAuth` to retrieve the current user's authentication details and `useApi` to display each venue.
+ * Venues are displayed using the `MyVenuesExpandable` component, which allows each venue to be expanded to view detailed information, and to be edited or deleted. This component ensures that only authenticated users can manage their venues.
+ *
+ * @module MyVenuesPage
+ * @returns {React.Component} The MyVenuesPage component, which provides an interface for users to manage their venue listings.
+ * @example
+ * return (
+ *   <MyVenuesPage />
+ * )
+ */
 const MyVenuesPage = () => {
   const { username, token, apiKey } = useAuth();
   const { fetchApi, isLoading, isError } = useApi();

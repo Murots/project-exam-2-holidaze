@@ -1,3 +1,13 @@
+/**
+ * Initiates a booking process for a venue. If not authenticated, it requests user sign-in.
+ * Otherwise, it submits the booking details to API.
+ *
+ * @param {boolean} isAuthenticated - Indicates user authentication status.
+ * @param {Object} bookingDetails - Object containing arrivalDate, departureDate, guests, and venueId.
+ * @param {function} fetchApi - Function to perform API calls.
+ * @param {function} setBookingMessage - Sets a message on successful booking.
+ * @param {function} setBookingError - Sets an error message on booking failure.
+ */
 export const handleBookNow = async (isAuthenticated, bookingDetails, fetchApi, setBookingMessage, setBookingError) => {
   if (!isAuthenticated) {
     const event = new Event("requestSignIn");

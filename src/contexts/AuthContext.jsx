@@ -1,5 +1,22 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
+/**
+ * Provides a context for managing authentication state and user information throughout the application.
+ * It includes functionalities to log in and log out users, and to update user-specific information such as avatar and bio.
+ * The context stores user details and authentication status in session storage to persist state across sessions.
+ * This context allows other components to access and modify user authentication status and user details in a centralized manner.
+ *
+ * @module AuthContext
+ * @function
+ * @param {React.ReactNode} children - The children components that will have access to the authentication context.
+ * @returns {JSX.Element} A provider component that wraps children with the authentication context, providing them access to authentication states and functions.
+ * @example
+ * return (
+ *   <AuthProvider>
+ *     <App />
+ *   </AuthProvider>
+ * )
+ */
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {

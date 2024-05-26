@@ -9,6 +9,20 @@ import { useAuth } from "../../contexts/AuthContext";
 import { handleDateChange, calculateNights, calculateTotalCost, isDatesInvalid } from "../../utils/booking-utils/bookingUtils";
 import { handleBookNow } from "../../utils/auth-utils/bookNowUtils";
 
+/**
+ * Represents the component that displays detailed information about a specific venue on the Holidaze platform.
+ * Users can view comprehensive details about a venue, select dates for booking, and choose the number of guests.
+ * The page also features dynamic calculations of total costs based on the selected dates and displays the availability based on existing bookings.
+ * It leverages the `useParams` hook to retrieve the venue ID from the URL and fetches data using a custom `useApi` hook.
+ * User interactions, such as date selection and guest count adjustments, are handled with interactive calendar and stepper components.
+ *
+ * @module DetailsPage
+ * @returns {React.Component} The DetailsPage component which provides a detailed view of a venue including availability, booking options, and detailed venue information.
+ * @example
+ * return (
+ *   <DetailsPage />
+ * )
+ */
 function DetailsPage() {
   const { id } = useParams();
   const { fetchApi } = useApi();

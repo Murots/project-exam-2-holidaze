@@ -2,6 +2,21 @@ import React from "react";
 import * as S from "./VenuesCard.styles";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * Represents a card component for displaying venue information in a visually appealing manner.
+ * The card shows the venue's image, name, location, price, and rating. Clicking on the card navigates the user to a detailed page for that specific venue. This component is used within VenuesPage to provide a concise snapshot of key venue details.
+ * Size of card based on venue rating.
+ *
+ * @module VenuesCard
+ * @param {Object} props
+ * @param {Object} props.venue - The venue data object.
+ * @param {number} props.rating - The rating of the venue used for conditional styling and display.
+ * @returns {React.Component} The VenuesCard component which acts as an interactive element for accessing detailed venue information.
+ * @example
+ * return (
+ *   <VenuesCard venue={venueData} rating={venueRating} />
+ * )
+ */
 const VenuesCard = ({ venue, rating }) => {
   const { name, media, price, location } = venue;
 

@@ -8,6 +8,18 @@ import { useLocation } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import UserDropdownMenu from "../user-dropdown-menu/UserDropdownMenu";
 
+/**
+ * Represents the main header component of the application, which includes navigation links, logo display, and signed in user options based on authentication level. The header's appearance and functionality adjust
+ * It provides interactive elements such as a hamburger menu for mobile views, logo interactions, and modal triggers for sign-in or registration processes.
+ * Authenticated users can access a dropdown menu for more user-specific options.
+ *
+ * @module Header
+ * @returns {React.Component} The Header component, which adapts to display user authentication state and navigation.
+ * @example
+ * return (
+ *   <Header />
+ * )
+ */
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isHeaderHovered, setIsHeaderHovered] = useState(false);

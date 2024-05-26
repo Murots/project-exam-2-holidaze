@@ -30,6 +30,20 @@ const validationSchema = yup.object().shape({
   }),
 });
 
+/**
+ * Represents an expandable component that displays detailed information about a specific venue, including its bookings.
+ * It provides an interactive interface where users can toggle detailed views, open to see bookings of the venue, edit venue information, and delete venue.
+ *
+ * @module MyVenuesExpandable
+ * @param {Object} props
+ * @param {Object} props.venue - The venue data object including detailed information like name, price, and metadata.
+ * @param {Function} props.onUpdate - Callback function to handle updates to the venue list after modifications.
+ * @returns {React.Component} The MyVenuesExpandable component which provides a detailed, interactive view for managing venue information.
+ * @example
+ * return (
+ *   <MyVenuesExpandable venue={venueData} onUpdate={updateVenueList} />
+ * )
+ */
 const MyVenuesExpandable = ({ venue, onUpdate }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [editMode, setEditMode] = useState(false);

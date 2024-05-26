@@ -36,6 +36,18 @@ const schema = yup
   })
   .required();
 
+/**
+ * Represents the component for creating a new venue on the Holidaze platform.
+ * Users can input details about a new venue including name, description, media URLs, price, guest capacity, facilities, and more.
+ * This component handles form validation using `react-hook-form` and `yup`, and submits the data to an API.
+ *
+ * @module CreateVenue
+ * @returns {React.Component} A form that allows users to enter details for a new venue and submit it.
+ * @example
+ * return (
+ *   <CreateVenue />
+ * )
+ */
 const CreateVenue = () => {
   const { fetchApi, isLoading } = useApi();
   const { token, apiKey } = useAuth();

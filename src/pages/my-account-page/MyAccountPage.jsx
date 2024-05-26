@@ -5,6 +5,18 @@ import { handleDetailsUpdate, handleSelectionChange } from "../../utils/account-
 import { useAuth } from "../../contexts/AuthContext";
 import useApi from "../../hooks/useApi";
 
+/**
+ * Represents the user account management component on the Holidaze platform.
+ * This component allows users to view and update their personal profile information, including their avatar, bio and venue manager status. It leverages `useAuth` for authentication context and `useApi` for sending updates to the server.
+ * Users can dynamically change their avatar URL and biography and toggle their role as venue manager.
+ *
+ * @module MyAccount
+ * @returns {React.Component} The MyAccount component, which provides an interface for users to manage their account details.
+ * @example
+ * return (
+ *   <MyAccount />
+ * )
+ */
 const MyAccount = () => {
   const { username, token, apiKey, avatarUrl, updateAvatar, bio, updateBio, venueManager: initialVenueManager } = useAuth();
   const { fetchApi } = useApi();

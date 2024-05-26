@@ -3,6 +3,21 @@ import * as S from "./UserDropdownMenu.styles";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * Represents a dropdown menu component for user interactions, tied to the authentication state.
+ * It allows authenticated users to access quick links to manage their profile, bookings, venues, and sign out.
+ * The dropdown's visibility is controlled by a toggle and it automatically hides when the user's mouse leaves the component.
+ * It is designed to integrate seamlessly with the header, responding to hover states for improved user experience.
+ *
+ * @module UserDropdownMenu
+ * @param {Object} props
+ * @param {boolean} props.isHeaderHovered - Indicates if the header is hovered over, affecting the dropdown's styling.
+ * @returns {React.Component} The UserDropdownMenu component which provides authenticated users with quick access to common functionalities.
+ * @example
+ * return (
+ *   <UserDropdownMenu isHeaderHovered={headerHoverState} />
+ * )
+ */
 const UserDropdownMenu = ({ isHeaderHovered }) => {
   const { logout, username, avatarUrl, venueManager } = useAuth();
   const [isOpen, setIsOpen] = useState(false);

@@ -5,6 +5,17 @@ import VenuesCard from "../../components/venues-card/VenuesCard";
 import useApi from "../../hooks/useApi";
 import { shuffle, handleSortChange, sortVenues, filterValidVenues } from "../../utils/venues-utils/venuesUtils";
 
+/**
+ * Represents the component that displays a list of venues available on the Holidaze platform.
+ * Users can view various venues that can be sorted by price or rating. This component fetches data using useApi, processes it to validate and shuffle the initial display, and allows dynamic sorting to enhance user experience.
+ *
+ * @module VenuesPage
+ * @returns {React.Component} The VenuesPage component, which provides a sortable interface for users to explore various venues.
+ * @example
+ * return (
+ *   <VenuesPage />
+ * )
+ */
 function VenuesPage() {
   const { fetchApi, isLoading, isError } = useApi();
   const [venues, setVenues] = useState([]);
