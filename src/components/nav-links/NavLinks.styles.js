@@ -15,9 +15,13 @@ export const NavContainer = styled.nav`
     left: 0;
     right: 0;
     background-color: #e9ecef;
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
     padding: 10px 20px;
     z-index: 10;
+    overflow: hidden;
+    transition: all 0.3s ease; // Adjust duration as needed
+    max-height: ${({ isOpen }) => (isOpen ? "300px" : "0")};
+    visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
+    opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
   }
 `;
 
@@ -38,6 +42,25 @@ export const StyledLink = styled(({ isHovered, ...props }) => <Link {...props} /
   }
 
   &:last-child {
-    margin-bottom: 0;
+    margin-right: 0;
+  }
+`;
+
+export const StyledLinkHome = styled(({ isHovered, ...props }) => <Link {...props} />)`
+  display: none;
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+  color: ${({ isHovered }) => (isHovered ? "black" : "white")};
+  font-weight: 600;
+
+  &:hover {
+    transform: scale(1.05);
+    color: #5b1a24;
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 15px;
   }
 `;

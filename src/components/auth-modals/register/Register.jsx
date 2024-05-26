@@ -13,6 +13,23 @@ const registerSchema = yup
   })
   .required();
 
+/**
+ * Represents the registration component within the authentication modal on the platform.
+ * This component provides an interface for new users to register by entering their username, email, and password.
+ * It validates user input against specified criteria using Yup schema validation integrated with react-hook-form.
+ * Upon successful registration, a success message is displayed, and any API errors are handled and shown to the user.
+ *
+ * @module Register
+ * @param {Object} props - Component props including modal control and form submission handlers.
+ * @param {boolean} props.isOpen - Indicates if the modal is open.
+ * @param {Function} props.onClose - Function to close the modal.
+ * @param {Function} props.switchToSignIn - Function to switch to the Sign In form.
+ * @returns {React.Component} The Register component which provides a form for user registration.
+ * @example
+ * return (
+ *   <Register isOpen={true} onClose={handleClose} switchToSignIn={switchToSignInForm} />
+ * )
+ */
 function Register({ isOpen, onClose, switchToSignIn }) {
   const {
     register,

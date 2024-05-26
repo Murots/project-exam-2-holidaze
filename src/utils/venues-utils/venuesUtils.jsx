@@ -1,4 +1,8 @@
-// Shuffle an array in a random order
+/**
+ * Shuffles an array of items in random order.
+ * @param {Array} array - The array to shuffle.
+ * @returns {Array} The shuffled array.
+ */
 export const shuffle = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -7,14 +11,24 @@ export const shuffle = (array) => {
   return array;
 };
 
-// Handle changes to the sorting criteria
+/**
+ * Handles changes to sorting criteria.
+ * @param {Function} setSort - State setter function for sort order.
+ * @param {Function} sortVenues - Function to sort venues based on the new criteria.
+ * @returns {Function} Event handler that sets new sorting criteria.
+ */
 export const handleSortChange = (setSort, sortVenues) => (event) => {
   const newSort = event.target.value;
   setSort(newSort);
   sortVenues(newSort);
 };
 
-// Sort venues based on a specified criteria
+/**
+ * Sorts an array of venues based on specified criteria.
+ * @param {Array} venues - The array of venues to sort.
+ * @param {string} criteria - The criteria to sort by (e.g., "priceAsc").
+ * @returns {Array} The sorted array of venues.
+ */
 export const sortVenues = (venues, criteria) => {
   const sortedVenues = [...venues];
   if (criteria === "priceAsc") {
@@ -29,7 +43,11 @@ export const sortVenues = (venues, criteria) => {
   return sortedVenues;
 };
 
-// Filter venues based on a specified criteria
+/**
+ * Filters an array of venues to ensure they meet certain validation criteria.
+ * @param {Array} venues - The array of venues to filter.
+ * @returns {Array} The filtered array of valid venues.
+ */
 export const filterValidVenues = (venues) => {
   const validVenues = venues.filter((venue) => {
     const hasValidMedia = venue.media && venue.media.length > 0 && !venue.media[0].url.includes("string");

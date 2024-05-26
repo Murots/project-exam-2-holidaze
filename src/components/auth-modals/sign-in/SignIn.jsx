@@ -13,6 +13,21 @@ const signInSchema = yup
   })
   .required();
 
+/**
+ * Represents the sign-in component within the authentication modal on the platform.
+ * Users can log in by entering their email and password. It uses form validation to ensure the input meets specific criteria before submitting to the API. Upon successful authentication, user session details are stored, and the user is logged in. The component handles both successful login and displays errors for login failures.
+ *
+ * @module SignIn
+ * @param {Object} props - Component props including modal control and navigation between auth forms.
+ * @param {boolean} props.isOpen - Indicates if the modal is open.
+ * @param {Function} props.onClose - Function to close the modal.
+ * @param {Function} props.switchToRegister - Function to switch to the Register form.
+ * @returns {React.Component} The SignIn component, which provides a form for user login.
+ * @example
+ * return (
+ *   <SignIn isOpen={true} onClose={handleClose} switchToRegister={switchToRegisterForm} />
+ * )
+ */
 function SignIn({ isOpen, onClose, switchToRegister }) {
   const {
     register,

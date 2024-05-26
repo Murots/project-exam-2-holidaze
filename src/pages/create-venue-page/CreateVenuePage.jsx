@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -35,6 +36,18 @@ const schema = yup
   })
   .required();
 
+/**
+ * Represents the component for creating a new venue on the Holidaze platform.
+ * Users can input details about a new venue including name, description, media URLs, price, guest capacity, facilities, and more.
+ * This component handles form validation using `react-hook-form` and `yup`, and submits the data to an API.
+ *
+ * @module CreateVenue
+ * @returns {React.Component} A form that allows users to enter details for a new venue and submit it.
+ * @example
+ * return (
+ *   <CreateVenue />
+ * )
+ */
 const CreateVenue = () => {
   const { fetchApi, isLoading } = useApi();
   const { token, apiKey } = useAuth();
@@ -73,85 +86,94 @@ const CreateVenue = () => {
   };
 
   return (
-    <S.Container>
-      <S.Heading>Create a New Venue</S.Heading>
-      <S.Form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <S.Label>
-            Name:
-            <S.Input {...register("name")} />
-            <S.ErrorMessage>{errors.name?.message}</S.ErrorMessage>
-          </S.Label>
-        </div>
-        <div>
-          <S.Label>
-            Description:
-            <S.Textarea {...register("description")} />
-            <S.ErrorMessage>{errors.description?.message}</S.ErrorMessage>
-          </S.Label>
-        </div>
-        <S.InlineGroup>
-          <S.InlineLabel>
-            Price:
-            <S.Input type="number" {...register("price")} />
-            <S.ErrorMessage>{errors.price?.message}</S.ErrorMessage>
-          </S.InlineLabel>
-          <S.InlineLabel>
-            Max Guests:
-            <S.Input type="number" step="1" {...register("maxGuests")} />
-            <S.ErrorMessage>{errors.maxGuests?.message}</S.ErrorMessage>
-          </S.InlineLabel>
-          <S.InlineLabel>
-            Rating:
-            <S.Input type="number" step="1" {...register("rating")} />
-            <S.ErrorMessage>{errors.rating?.message}</S.ErrorMessage>
-          </S.InlineLabel>
-        </S.InlineGroup>
-        <S.InlineGroup>
-          <S.InlineLabel>
-            City:
-            <S.Input {...register("location.city")} />
-            <S.ErrorMessage>{errors.location?.city?.message}</S.ErrorMessage>
-          </S.InlineLabel>
-          <S.InlineLabel>
-            Country:
-            <S.FixedText>Norway</S.FixedText>
-            <input type="hidden" value="Norway" {...register("location.country")} />
-          </S.InlineLabel>
-        </S.InlineGroup>
-        <div>
-          <S.Label>
-            Image URL:
-            <S.Input {...register("media.0.url")} onChange={handleMediaChange} />
-            <S.ErrorMessage>{errors.media?.[0]?.url?.message}</S.ErrorMessage>
-          </S.Label>
-          {mediaPreview && <S.ImagePreview src={mediaPreview} alt="Media preview" />}
-        </div>
-        <S.CheckboxGroup>
-          <S.Label>Facilities:</S.Label>
-          <S.CheckboxLabel>
-            <input type="checkbox" {...register("meta.wifi")} />
-            Wifi
-          </S.CheckboxLabel>
-          <S.CheckboxLabel>
-            <input type="checkbox" {...register("meta.parking")} />
-            Parking
-          </S.CheckboxLabel>
-          <S.CheckboxLabel>
-            <input type="checkbox" {...register("meta.breakfast")} />
-            Breakfast
-          </S.CheckboxLabel>
-          <S.CheckboxLabel>
-            <input type="checkbox" {...register("meta.pets")} />
-            Pets
-          </S.CheckboxLabel>
-        </S.CheckboxGroup>
-        {feedbackMessage && <S.FeedbackMessage error={isError}>{feedbackMessage}</S.FeedbackMessage>}
-        <S.SubmitButton type="submit" disabled={isLoading}>
-          Create Venue
-        </S.SubmitButton>
-      </S.Form>
-    </S.Container>
+    <div>
+      <Helmet>
+        <title>Holidaze | Create Venue</title>
+        <meta
+          name="description"
+          content="In just a few easy steps, you can create and add a new venue for rent. Please provide the details of your venue and submit. Earning money has never been easier."
+        />
+      </Helmet>
+      <S.Container>
+        <S.Heading>Create a New Venue</S.Heading>
+        <S.Form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <S.Label>
+              Name:
+              <S.Input {...register("name")} />
+              <S.ErrorMessage>{errors.name?.message}</S.ErrorMessage>
+            </S.Label>
+          </div>
+          <div>
+            <S.Label>
+              Description:
+              <S.Textarea {...register("description")} />
+              <S.ErrorMessage>{errors.description?.message}</S.ErrorMessage>
+            </S.Label>
+          </div>
+          <S.InlineGroup>
+            <S.InlineLabel>
+              Price:
+              <S.Input type="number" {...register("price")} />
+              <S.ErrorMessage>{errors.price?.message}</S.ErrorMessage>
+            </S.InlineLabel>
+            <S.InlineLabel>
+              Max Guests:
+              <S.Input type="number" step="1" {...register("maxGuests")} />
+              <S.ErrorMessage>{errors.maxGuests?.message}</S.ErrorMessage>
+            </S.InlineLabel>
+            <S.InlineLabel>
+              Rating:
+              <S.Input type="number" step="1" {...register("rating")} />
+              <S.ErrorMessage>{errors.rating?.message}</S.ErrorMessage>
+            </S.InlineLabel>
+          </S.InlineGroup>
+          <S.InlineGroup>
+            <S.InlineLabel>
+              City:
+              <S.Input {...register("location.city")} />
+              <S.ErrorMessage>{errors.location?.city?.message}</S.ErrorMessage>
+            </S.InlineLabel>
+            <S.InlineLabel>
+              Country:
+              <S.FixedText>Norway</S.FixedText>
+              <input type="hidden" value="Norway" {...register("location.country")} />
+            </S.InlineLabel>
+          </S.InlineGroup>
+          <div>
+            <S.Label>
+              Image URL:
+              <S.Input {...register("media.0.url")} onChange={handleMediaChange} />
+              <S.ErrorMessage>{errors.media?.[0]?.url?.message}</S.ErrorMessage>
+            </S.Label>
+            {mediaPreview && <S.ImagePreview src={mediaPreview} alt="Media preview" />}
+          </div>
+          <S.CheckboxGroup>
+            <S.Label>Facilities:</S.Label>
+            <S.CheckboxLabel>
+              <input type="checkbox" {...register("meta.wifi")} />
+              Wifi
+            </S.CheckboxLabel>
+            <S.CheckboxLabel>
+              <input type="checkbox" {...register("meta.parking")} />
+              Parking
+            </S.CheckboxLabel>
+            <S.CheckboxLabel>
+              <input type="checkbox" {...register("meta.breakfast")} />
+              Breakfast
+            </S.CheckboxLabel>
+            <S.CheckboxLabel>
+              <input type="checkbox" {...register("meta.pets")} />
+              Pets
+            </S.CheckboxLabel>
+          </S.CheckboxGroup>
+          {feedbackMessage && <S.FeedbackMessage error={isError}>{feedbackMessage}</S.FeedbackMessage>}
+          <S.SubmitButton type="submit" disabled={isLoading}>
+            Create Venue
+          </S.SubmitButton>
+        </S.Form>
+      </S.Container>
+    </div>
   );
 };
 
