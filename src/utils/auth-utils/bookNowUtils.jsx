@@ -31,8 +31,12 @@ export const handleBookNow = async (isAuthenticated, bookingDetails, fetchApi, s
 
     try {
       const result = await fetchApi("https://v2.api.noroff.dev/holidaze/bookings", "POST", data, token, apiKey);
-      setBookingMessage("Congratulations! Visit 'My Bookings' to view your booking details.");
-      setBookingError("");
+      if (result && result.data && result.data.id) {
+        setBookingMessage(`Congratulations! Visit "My Bookings" for booking details.`);
+        setBookingError("");
+      } else {
+        throw new Error("Booking was processed but did not return a valid confirmation.");
+      }
     } catch (error) {
       console.error("Failed to book:", error);
       setBookingError("Something went wrong. Try again later.");

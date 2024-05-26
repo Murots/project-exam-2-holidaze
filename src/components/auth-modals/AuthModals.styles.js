@@ -92,3 +92,7 @@ export const CloseIcon = styled(FaTimes)`
     color: #000;
   }
 `;
+
+export const SwitchLink = styled.a`
+  cursor: pointer;
+`;

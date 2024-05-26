@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { ModalOverlay, ModalContent, CloseIcon, FeedbackMessage } from "../AuthModals.styles";
+import { ModalOverlay, ModalContent, CloseIcon, FeedbackMessage, SwitchLink } from "../AuthModals.styles";
 import useApi from "../../../hooks/useApi";
 
 const registerSchema = yup
@@ -79,10 +79,7 @@ function Register({ isOpen, onClose, switchToSignIn }) {
           {apiError ? <FeedbackMessage error>{apiError}</FeedbackMessage> : <FeedbackMessage>{successMessage}</FeedbackMessage>}
 
           <p>
-            Already have an account?{" "}
-            <a href="#" onClick={switchToSignIn}>
-              Sign In
-            </a>
+            Already have an account? <SwitchLink onClick={switchToSignIn}>Sign In</SwitchLink>
           </p>
         </form>
       </ModalContent>

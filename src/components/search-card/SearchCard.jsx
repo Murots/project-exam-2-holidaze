@@ -17,7 +17,14 @@ import { useNavigate } from "react-router-dom";
  * )
  */
 function SearchCard({ venue }) {
-  const { id, name, media, price, location, rating } = venue;
+  const {
+    id,
+    name,
+    media,
+    price,
+    location: { city },
+    rating,
+  } = venue;
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -29,7 +36,7 @@ function SearchCard({ venue }) {
       <S.VenueImage src={media[0]?.url || "placeholder.jpg"} alt={name} />
       <S.Info>
         <S.VenueName>{name}</S.VenueName>
-        <S.VenueCity>{venue.location.city}</S.VenueCity>
+        <S.VenueCity>{city}</S.VenueCity>
         <S.Details>
           <S.VenuePrice>{price} NOK</S.VenuePrice>
           {rating ? (

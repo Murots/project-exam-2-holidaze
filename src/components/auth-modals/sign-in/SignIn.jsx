@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { ModalOverlay, ModalContent, CloseIcon, FeedbackMessage } from "../AuthModals.styles";
+import { ModalOverlay, ModalContent, CloseIcon, FeedbackMessage, SwitchLink } from "../AuthModals.styles";
 import useApi from "../../../hooks/useApi";
 import { useAuth } from "../../../contexts/AuthContext";
 
@@ -83,10 +83,7 @@ function SignIn({ isOpen, onClose, switchToRegister }) {
           <button type="submit">Sign In</button>
           {apiError && <FeedbackMessage error>{apiError}</FeedbackMessage>}
           <p>
-            Not registered?{" "}
-            <a href="#" onClick={switchToRegister}>
-              Create an account
-            </a>
+            Not registered? <SwitchLink onClick={switchToRegister}>Create an account</SwitchLink>
           </p>
         </form>
       </ModalContent>
