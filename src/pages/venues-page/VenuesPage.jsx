@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import * as S from "./VenuesPage.styles";
 import VenuesCard from "../../components/venues-card/VenuesCard";
 import useApi from "../../hooks/useApi";
@@ -57,24 +58,33 @@ function VenuesPage() {
   }
 
   return (
-    <S.PageContainer>
-      <S.Heading>Venues</S.Heading>
-      <S.SortContainer>
-        <S.SortLabel>Sort by:</S.SortLabel>
-        <S.SortSelect value={sort} onChange={handleSortChange(setSort, sortVenues.bind(null, venues))}>
-          <option value="">Select</option>
-          <option value="priceAsc">Price (Low to High)</option>
-          <option value="priceDesc">Price (High to Low)</option>
-          <option value="ratingAsc">Rating (Low to High)</option>
-          <option value="ratingDesc">Rating (High to Low)</option>
-        </S.SortSelect>
-      </S.SortContainer>
-      <S.VenuesGrid>
-        {sortedVenues.map((venue) => (
-          <VenuesCard key={venue.id} venue={venue} rating={venue.rating} />
-        ))}
-      </S.VenuesGrid>
-    </S.PageContainer>
+    <div>
+      <Helmet>
+        <title>Holidaze | Venues</title>
+        <meta
+          name="description"
+          content="Dive into our great selection of venues in Norway. The venues are displayed in different size, based on their rating. Please use the sort function for easy access."
+        />
+      </Helmet>
+      <S.PageContainer>
+        <S.Heading>Venues</S.Heading>
+        <S.SortContainer>
+          <S.SortLabel>Sort by:</S.SortLabel>
+          <S.SortSelect value={sort} onChange={handleSortChange(setSort, sortVenues.bind(null, venues))}>
+            <option value="">Select</option>
+            <option value="priceAsc">Price (Low to High)</option>
+            <option value="priceDesc">Price (High to Low)</option>
+            <option value="ratingAsc">Rating (Low to High)</option>
+            <option value="ratingDesc">Rating (High to Low)</option>
+          </S.SortSelect>
+        </S.SortContainer>
+        <S.VenuesGrid>
+          {sortedVenues.map((venue) => (
+            <VenuesCard key={venue.id} venue={venue} rating={venue.rating} />
+          ))}
+        </S.VenuesGrid>
+      </S.PageContainer>
+    </div>
   );
 }
 

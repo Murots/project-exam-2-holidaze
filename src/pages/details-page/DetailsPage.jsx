@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import * as S from "./DetailsPage.styles";
@@ -75,83 +76,92 @@ function DetailsPage() {
   }
 
   return (
-    <S.Container>
-      <S.PageHeader>
-        <S.Image src={venue.media[0]?.url} alt={venue.name || "Venue image"} />
-        <S.Name>{venue.name}</S.Name>
-      </S.PageHeader>
-      <S.Content>
-        <S.Description>{venue.description}</S.Description>
-        <S.BookingHeader>Choose your stay</S.BookingHeader>
-        <S.BookingContainer>
-          <S.BookingOptions>
-            <S.CalendarStyles>
-              <CalendarPicker
-                showCalendar={showArrivalCalendar}
-                toggleCalendar={() => setShowArrivalCalendar(!showArrivalCalendar)}
-                onChange={handleDateChange(setArrivalDate, setShowArrivalCalendar)}
-                value={arrivalDate}
-                label="Arrival"
-                bookings={bookings}
-              />
-            </S.CalendarStyles>
-            <S.CalendarStyles>
-              <CalendarPicker
-                showCalendar={showDepartureCalendar}
-                toggleCalendar={() => setShowDepartureCalendar(!showDepartureCalendar)}
-                onChange={handleDateChange(setDepartureDate, setShowDepartureCalendar)}
-                value={departureDate}
-                label="Departure"
-                bookings={bookings}
-              />
-            </S.CalendarStyles>
-            <S.GuestContainer>
-              <S.Label>Guests:</S.Label>
-              <GuestStepper maxGuests={venue.maxGuests} selectedGuests={selectedGuests} setSelectedGuests={setSelectedGuests} />
-            </S.GuestContainer>
-            <S.BookButton onClick={bookNow} disabled={isInvalid}>
-              Book Now
-            </S.BookButton>
-          </S.BookingOptions>
-          <S.PriceContainer>
-            <S.PriceDetail>
-              {nights} nights: {totalCost} NOK
-            </S.PriceDetail>
-          </S.PriceContainer>
-          <S.LegendContainer>
-            <S.LegendSquare />
-            <S.LegendText>= Not available</S.LegendText>
-          </S.LegendContainer>
-          {bookingMessage && <S.FeedbackMessage>{bookingMessage}</S.FeedbackMessage>}
-          {bookingError && <S.FeedbackMessage error>{bookingError}</S.FeedbackMessage>}
-        </S.BookingContainer>
-        <p>
-          <strong>Price per night:</strong> {venue.price} NOK
-        </p>
-        <p>
-          <strong>Maximum guests:</strong> {venue.maxGuests}
-        </p>
-        <S.Features>
-          <strong>Facilities:</strong>
-          <S.FeaturesList>
-            {venue.meta.wifi && <li>Wifi</li>}
-            {venue.meta.parking && <li>Parking</li>}
-            {venue.meta.breakfast && <li>Breakfast Included</li>}
-            {venue.meta.pets && <li>Pet Friendly</li>}
-          </S.FeaturesList>
-        </S.Features>
-        <p>
-          <strong>Location:</strong> {`${venue.location.city}, ${venue.location.country}`}
-        </p>
-        <S.OwnerContainer>
-          <S.OwnerAvatar src={venue.owner.avatar.url} alt={venue.owner.avatar.alt || "Owner avatar"} />
-          <div>
-            <S.OwnerName>{venue.owner.name}</S.OwnerName>
-            <S.OwnerBio>{venue.owner.bio || "No bio available"}</S.OwnerBio>
-          </div>
-        </S.OwnerContainer>
-      </S.Content>
-    </S.Container>
+    <div>
+      <Helmet>
+        <title>Holidaze | Details</title>
+        <meta
+          name="description"
+          content="See the detail information about this venue. Select arrival and departure dates in the calendar, as well as number of guests, to make a booking. Red dates are unavailable. The total cost of your stay is provided right away - no hidden costs."
+        />
+      </Helmet>
+      <S.Container>
+        <S.PageHeader>
+          <S.Image src={venue.media[0]?.url} alt={venue.name || "Venue image"} />
+          <S.Name>{venue.name}</S.Name>
+        </S.PageHeader>
+        <S.Content>
+          <S.Description>{venue.description}</S.Description>
+          <S.BookingHeader>Choose your stay</S.BookingHeader>
+          <S.BookingContainer>
+            <S.BookingOptions>
+              <S.CalendarStyles>
+                <CalendarPicker
+                  showCalendar={showArrivalCalendar}
+                  toggleCalendar={() => setShowArrivalCalendar(!showArrivalCalendar)}
+                  onChange={handleDateChange(setArrivalDate, setShowArrivalCalendar)}
+                  value={arrivalDate}
+                  label="Arrival"
+                  bookings={bookings}
+                />
+              </S.CalendarStyles>
+              <S.CalendarStyles>
+                <CalendarPicker
+                  showCalendar={showDepartureCalendar}
+                  toggleCalendar={() => setShowDepartureCalendar(!showDepartureCalendar)}
+                  onChange={handleDateChange(setDepartureDate, setShowDepartureCalendar)}
+                  value={departureDate}
+                  label="Departure"
+                  bookings={bookings}
+                />
+              </S.CalendarStyles>
+              <S.GuestContainer>
+                <S.Label>Guests:</S.Label>
+                <GuestStepper maxGuests={venue.maxGuests} selectedGuests={selectedGuests} setSelectedGuests={setSelectedGuests} />
+              </S.GuestContainer>
+              <S.BookButton onClick={bookNow} disabled={isInvalid}>
+                Book Now
+              </S.BookButton>
+            </S.BookingOptions>
+            <S.PriceContainer>
+              <S.PriceDetail>
+                {nights} nights: {totalCost} NOK
+              </S.PriceDetail>
+            </S.PriceContainer>
+            <S.LegendContainer>
+              <S.LegendSquare />
+              <S.LegendText>= Not available</S.LegendText>
+            </S.LegendContainer>
+            {bookingMessage && <S.FeedbackMessage>{bookingMessage}</S.FeedbackMessage>}
+            {bookingError && <S.FeedbackMessage error>{bookingError}</S.FeedbackMessage>}
+          </S.BookingContainer>
+          <p>
+            <strong>Price per night:</strong> {venue.price} NOK
+          </p>
+          <p>
+            <strong>Maximum guests:</strong> {venue.maxGuests}
+          </p>
+          <S.Features>
+            <strong>Facilities:</strong>
+            <S.FeaturesList>
+              {venue.meta.wifi && <li>Wifi</li>}
+              {venue.meta.parking && <li>Parking</li>}
+              {venue.meta.breakfast && <li>Breakfast Included</li>}
+              {venue.meta.pets && <li>Pet Friendly</li>}
+            </S.FeaturesList>
+          </S.Features>
+          <p>
+            <strong>Location:</strong> {`${venue.location.city}, ${venue.location.country}`}
+          </p>
+          <S.OwnerContainer>
+            <S.OwnerAvatar src={venue.owner.avatar.url} alt={venue.owner.avatar.alt || "Owner avatar"} />
+            <div>
+              <S.OwnerName>{venue.owner.name}</S.OwnerName>
+              <S.OwnerBio>{venue.owner.bio || "No bio available"}</S.OwnerBio>
+            </div>
+          </S.OwnerContainer>
+        </S.Content>
+      </S.Container>
+    </div>
   );
 }
 
