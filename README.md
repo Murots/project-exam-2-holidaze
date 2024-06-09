@@ -1,4 +1,12 @@
-# Semester exam 2 - Holidaze
+# Project exam 2 - Holidaze
+
+<picture>
+    <img alt="gamehub logo" src="https://github.com/Murots/My-images/blob/main/Holidaze_ss-compressed.jpg">
+</picture>
+
+Aa venue site to explore, book and manage venues.
+
+## Description
 
 Holidaze is a venue site where users can explore and book venues. This project was developed as part of the Semester 2 exam at Noroff. It includes functionality for viewing, searching, and booking venues, as well as managing them if the user is registered as a venue manager.
 
@@ -11,7 +19,15 @@ Features
 - Venue management capabilities for registered venue managers.
 - A registered user may logout
 
-## Installing
+## Built with
+
+- React
+- JavaScript
+- Styled components
+  
+## Getting Started
+
+### Installing
 
 1. Clone the repository:
    git clone https://github.com/Murots/project-exam-2-holidaze.git
@@ -30,19 +46,7 @@ Features
 3. To start the test runner in the interactive watch mode:
    npm test
 
-#### Changes/problems
-
-Due to time constraints, comprehensive testing could not be completed, which may affect the application's robustness in unforeseen scenarios.
-
-##### Links
-
-Github Repository:
-https://github.com/Murots/project-exam-2-holidaze
-
-Netlify Live demo:
-https://singular-melba-972a25.netlify.app/
-
-###### References
+## References
 
 - Pictures:
 
@@ -53,8 +57,15 @@ https://singular-melba-972a25.netlify.app/
 - Noroff Course Content
 - ChatGPT as sparring partner.
 
-###### Authors
+## Contributing
 
-Aleksander Storum
-Github: Murots
-alesto95654@stud.noroff.no
+Not open for contributions
+
+## Contact
+
+- Email: storum.aleksander@gmail.com
+- Github: Murots
+
+## Acknowledgments
+
+Noroff
