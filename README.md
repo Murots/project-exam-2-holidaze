@@ -46,6 +46,8 @@ Features
 3. To start the test runner in the interactive watch mode:
    npm test
 
+NB: Use "...@stud.noroff.no" as email when registering a site account.
+
 ## References
 
 - Pictures:
